@@ -4,16 +4,19 @@ import pygame
 import os
 
 
-def show_map(lon_lat=None, delta=0.005, map_type='map'):
+def show_map(lon_lat=None, delta=0.005, map_type='map', pt=None):
     """ Статическая картинка в PyGame по координатам """
     # Собираем запрос для статик карт.
     map_api_server = "http://static-maps.yandex.ru/1.x/"
 
     toponym_longitude, toponym_lattitude = lon_lat.split(" ")
+    if pt:
+        pt = ",".join([toponym_longitude, toponym_lattitude])
     map_params = {
         "ll": ",".join([toponym_longitude, toponym_lattitude]),
         "spn": ",".join([delta, delta]),
-        "l": map_type
+        "l": map_type,
+        "pt": pt
     }
 
     # Выполняем запрос.

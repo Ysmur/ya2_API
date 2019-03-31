@@ -17,7 +17,7 @@ def bolder(address):
         dx = abs(float(l) - float(r)) / 2.0
         dy = abs(float(t) - float(b)) / 2.0
 
-        return max(dx, dy)
+        return str(max(dx, dy))
     return None
 
 
